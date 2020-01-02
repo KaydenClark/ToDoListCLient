@@ -19,7 +19,7 @@ export default function NavBar() {
                 <nav>
                     <ul>
                         <li>
-                            <Link to= "/home">Home</Link>
+                            <Link to= "/">Home</Link>
                         </li>
                         <li>
                             <Link to= "/taskList">Task List</Link>
@@ -28,7 +28,7 @@ export default function NavBar() {
                 </nav>
 
                 <Switch>
-                    <Route path = "/home">
+                    <Route exact path = "/">
                         <HomePage />
                     </Route>
                     <Route path = "/taskList">

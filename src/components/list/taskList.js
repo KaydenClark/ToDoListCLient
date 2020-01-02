@@ -5,6 +5,8 @@ import ListItem from './listItem'
 import { Link } from 'react-router-dom'
 
 const TODOLISTS_API = 'https://kc-todo-api.herokuapp.com/lists';
+const API_LISTRAW = 'https://kc-todo-api.herokuapp.com/listsRaw'
+
 const style = {
     listStyle: 'none'
 }
@@ -19,7 +21,7 @@ export default class TaskList extends React.Component {
 
     renderLists = (listData) => {
         const lists = listData.map((lists) =>
-        <ListItem key= {"Title"+ lists.title} keys= {lists} />
+        <ListItem key= {"Title-"+ lists.title} keys= {lists} id= {lists.id}/>
         )
         this.setState({lists})
     }
@@ -28,8 +30,8 @@ export default class TaskList extends React.Component {
         console.log('Coneected for Lists')
         const [lists] = await Promise.all([
             axios.get(TODOLISTS_API),
+            axios.get(API_LISTRAW),
         ]);
-            // console.log(lists.data.data)
             this.renderLists(lists.data.data)
             
     }

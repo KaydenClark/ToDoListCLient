@@ -2,7 +2,7 @@ import React from 'react';
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 
-const TODOLISTS_API = 'https://kc-todo-api.herokuapp.com/lists';
+const API_Lists = 'https://kc-todo-api.herokuapp.com/lists';
 
 export default class NewList extends React.Component{
 
@@ -28,7 +28,7 @@ export default class NewList extends React.Component{
 
     postListTitleAxios = async () => {
         console.log('Conected for Lists')
-        await axios.post(TODOLISTS_API, {
+        await axios.post(API_Lists, {
             title: this.state.value,
             todos: []
         });
@@ -42,7 +42,7 @@ export default class NewList extends React.Component{
                         List Tile:
                         <input type= "text" name= "listTitle" value={this.state.value} onChange={this.handleChange}/>
                     </label>
-                    <input type= "submit" value= "Submit" />
+                    <input type= "submit" value= "Submit" href= "/taskList" />
                 </form>
             </div>
         )
