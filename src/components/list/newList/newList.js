@@ -2,7 +2,7 @@ import React from 'react';
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 
-const API_Lists = 'https://kc-todo-api.herokuapp.com/lists';
+const API_Lists = 'http://localhost:5000/lists';
 
 export default class NewList extends React.Component{
 

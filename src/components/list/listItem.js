@@ -3,7 +3,9 @@ import TaskItem from './taskItem'
 import './listItem.css'
 import axios from 'axios'
 
-const TODOLIST_API = 'https://kc-todo-api.herokuapp.com/tasks'
+const TODOTASK_API = 'http://localhost:5000/tasks'
+const TODOLIST_API = 'http://localhost:5000/lists'
+
 
 export default class ListItem extends React.Component {
     constructor(props){
@@ -14,6 +16,7 @@ export default class ListItem extends React.Component {
 
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleClickDelete = this.handleClickDelete.bind(this);
     }
 
     handleSubmit = (event) => {
@@ -26,6 +29,10 @@ export default class ListItem extends React.Component {
         this.setState({value: event.target.value})
     }
 
+    handleClickDelete = async () => {
+        await axios.delete(TODOLIST_API + '/' + this.props.id)
+    }
+
     renderTasks = (taskList) => {
         const tasks = taskList.map((task) =>
         <TaskItem key= {"title"+ task} keys= {task} />
@@ -35,14 +42,15 @@ export default class ListItem extends React.Component {
 
     postTaskAxios = async () => {
         console.log('Conected for Lists')
-        await axios.post(TODOLIST_API + '/' + this.props.id, {
+        await axios.post(TODOTASK_API + '/' + this.props.id, {
             title: this.state.value,
             complete: false
         });
     }
 
-    componentDidMount = () => {
-        console.log(TODOLIST_API + '/' + this.props.id)
+    delteListAxios = async () => {
+        console.log('connected for deleting list')
+        await axios.delete(TODOLIST_API + '/' + this.props.id)
     }
 
 
@@ -50,7 +58,8 @@ export default class ListItem extends React.Component {
         return (
             <div >
                 <div  className= "title"> 
-                    {this.props.keys.title} 
+                    {this.props.keys.title}
+                    <button onClick={this.handleClickDelete}>Delete List</button> 
                 </div>
                 <ul>
                     {this.renderTasks(this.props.keys.data)}
