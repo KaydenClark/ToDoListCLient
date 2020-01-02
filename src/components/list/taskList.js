@@ -5,7 +5,6 @@ import ListItem from './listItem'
 import { Link } from 'react-router-dom'
 
 const TODOLISTS_API = 'http://localhost:5000/lists';
-// const API_LISTRAW = 'https://localhost:5000/listsRaw';
 
 const style = {
     listStyle: 'none'
@@ -17,8 +16,6 @@ export default class TaskList extends React.Component {
         this.state = {
             lists: [],
         } //state
-
-        this.handleClickDelete = this.handleClickDelete.bind(this)
     }// constructor
 
     renderLists = (listData) => {
@@ -32,15 +29,10 @@ export default class TaskList extends React.Component {
         console.log('Coneected for Lists')
         const [lists] = await Promise.all([
             axios.get(TODOLISTS_API),
-            // axios.get(API_LISTRAW),
         ]);
             this.renderLists(lists.data.data)
             
     }
-
-    handleClickDelete() {
-
-      }
 
     componentDidMount = async () => {
         await this.getListsAxios()
@@ -53,10 +45,7 @@ export default class TaskList extends React.Component {
             <Link to= "/newList">
                 <button>Add List</button><br />
             </Link>
-            {/* <button onClick={this.handleClickDelte}>
-                Delete List
-            </button> */}
-            <ul style = {style}>
+            <ul style = {style} className= "taskLists">
                 {this.state.lists}
             </ul>
          </div>

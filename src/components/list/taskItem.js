@@ -1,8 +1,9 @@
 import React from 'react'
+import './taskItem.css'
 
 const TaskItem = (props) => {
     return (
-        <li >
+        <li className= "title-task">
             {props.keys}
         </li>
     )
