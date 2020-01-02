@@ -1,1 +1,1 @@
-This is my base start for making a react app
+A basic Task Manger app that shows full CRUD functionality for a web application
