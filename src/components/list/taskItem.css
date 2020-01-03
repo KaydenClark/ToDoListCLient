@@ -1,3 +1,11 @@
 .title-task{
     color: #F5B841;
 }
+
+.task-complete{
+    color: #809848
+}
+
+.task-incomplete{
+    color: #DB5461
+}

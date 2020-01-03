@@ -1,0 +1,33 @@
+import React from 'react'
+import {
+    useHistory,
+    useLocation
+} from "react-router-dom";
+import { AuthContext } from '../context/auth-context'
+import '../styles/Login.css'
+
+export const Login = () => {
+    let history = useHistory();
+    let location = useLocation();
+
+    let { from } = location.state || { from: { pathname: "/" } };
+    let login = (event, contextFunc) => {
+        event.preventDefault()
+        contextFunc(() => {
+            history.replace(from);
+        });
+    };
+    
+    return (
+        <AuthContext.Consumer>
+            {({ authenticate }) =>(
+            <form onSubmit={(event) => login(event, authenticate)} className= "loginForm">
+                        <input type="text" placeholder="Username" /> <br />
+                        <input type="password" placeholder="Password" /> <br />
+                        <input type="submit" value= "Sign In"/>
+                    </form>
+                )
+            }
+        </AuthContext.Consumer>
+    )
+}
