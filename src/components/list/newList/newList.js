@@ -1,8 +1,8 @@
 import React from 'react';
 import axios from 'axios'
-import { Link } from 'react-router-dom'
+// import { Link } from 'react-router-dom'
 
-const API_Lists = 'http://localhost:5000/lists';
+const API_LISTS = 'http://localhost:5000/lists';
 
 export default class NewList extends React.Component{
 
@@ -20,6 +20,7 @@ export default class NewList extends React.Component{
         event.preventDefault()
         alert("A list has been added: " + this.state.value)
         this.postListTitleAxios()
+
     }
 
     handleChange = (event) => {
@@ -28,7 +29,7 @@ export default class NewList extends React.Component{
 
     postListTitleAxios = async () => {
         console.log('Conected for Lists')
-        await axios.post(API_Lists, {
+        await axios.post(API_LISTS, {
             title: this.state.value,
             todos: []
         });
@@ -42,7 +43,7 @@ export default class NewList extends React.Component{
                         List Tile:
                         <input type= "text" name= "listTitle" value={this.state.value} onChange={this.handleChange}/>
                     </label>
-                    <input type= "submit" value= "Submit" href= "/taskList" />
+                        <input type= "submit" value= "Submit" />
                 </form>
             </div>
         )
