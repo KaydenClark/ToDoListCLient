@@ -6,7 +6,7 @@ import {
     // Link,
     // Redirect
   } from "react-router-dom";
-import PrivateRoute from './PrivateRoute'
+// import PrivateRoute from './PrivateRoute'
 import {Login} from '../../pages/Login'
 // import { AuthContext } from '../../context/auth-context'
 import Home from '../home/home'
@@ -27,12 +27,12 @@ export const Routes = () => {
                 <Route path= "/login/signup">
 
                 </Route>
-                <PrivateRoute path= "/taskList">
+                <Route path= "/taskList">
                     <ToDoList />
-                </PrivateRoute>
-                <PrivateRoute path= "/newList">
+                </Route>
+                <Route path= "/newList">
                     <CreateNewList />
-                </PrivateRoute>
+                </Route>
             </Switch>
         </div>
     )

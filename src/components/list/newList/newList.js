@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios'
-import { useHistory } from 'react-router-dom'
+// import { useHistory } from 'react-router-dom'
 
 const API_LISTS = 'http://localhost:5000/lists';
 
@@ -23,11 +23,11 @@ export default class NewList extends React.Component{
     // }
 
     handleSubmit = (event) => {
-        let history = useHistory()
+        // let history = useHistory()
         event.preventDefault()
         alert("A list has been added: " + this.state.value)
         this.postListTitleAxios()
-        history.pushState("/taskList")
+        // history.pushState("/taskList")
 
     }
 
