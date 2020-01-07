@@ -21,11 +21,14 @@ export const Login = () => {
     return (
         <AuthContext.Consumer>
             {({ authenticate }) =>(
-            <form onSubmit={(event) => login(event, authenticate)} className= "loginForm">
-                        <input type="text" placeholder="Username" /> <br />
-                        <input type="password" placeholder="Password" /> <br />
-                        <input type="submit" value= "Sign In"/>
-                    </form>
+            <div  className= "loginForm">
+                <h1> Login </h1>
+                <form onSubmit={(event) => login(event, authenticate)}>
+                    <input id= "username" type="text" placeholder="Username" />
+                    <input id= "password" type="password" placeholder="Password" />
+                    <input type="submit" value= "Sign In" />
+                </form>
+            </div>
                 )
             }
         </AuthContext.Consumer>

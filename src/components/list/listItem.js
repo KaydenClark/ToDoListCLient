@@ -19,23 +19,30 @@ export default class ListItem extends React.Component {
         this.handleClickDelete = this.handleClickDelete.bind(this);
     }
 
-    handleSubmit = (event) => {
-        // event.preventDefault()
+    handleSubmit = async (event) => {
+        event.preventDefault()
         alert("A task has been added: " + this.state.value)
-        this.postTaskAxios()
+        await this.postTaskAxios()
+        console.log('posted')
+        await this.props.getList()
     }
 
     handleChange = (event) => {
         this.setState({value: event.target.value})
     }
 
-    handleClickDelete = async () => {
-        await axios.delete(TODOLIST_API + '/' + this.props.id)
+    handleClickDelete = async (event) => {
+        event.preventDefault()
+        alert("a Task has been delted")
+        await this.delteListAxios()
+        await console.log('delted list')
+        await this.props.getList()
     }
 
     renderTasks = (taskList) => {
+        // console.log(taskList)
         const tasks = taskList.map((task) =>
-        <TaskItem key= {"title"+ task} keys= {task} />
+        <TaskItem key= {task.id} title= {task.title} id= {task.id} render= {this.props.getList}/>
         )
         return tasks
     }
@@ -58,11 +65,13 @@ export default class ListItem extends React.Component {
         return (
             <div >
                 <div  className= "title"> 
-                    {this.props.keys.title}
-                    <button onClick={this.handleClickDelete}>Delete List</button> 
+                    {this.props.title.title}
+                    <form onSubmit={this.handleClickDelete}>
+                        <input type= "submit" value= "Delete List"></input> 
+                    </form>
                 </div>
                 <ul>
-                    {this.renderTasks(this.props.keys.data)}
+                    {this.renderTasks(this.props.title.data)}
                    <li>
                        <form onSubmit={this.handleSubmit}>
                            <input type= "text" placeholder= "add new task" value={this.state.value} onChange={this.handleChange}/>

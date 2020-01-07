@@ -19,8 +19,11 @@ export default class TaskList extends React.Component {
     }// constructor
 
     renderLists = (listData) => {
+        // console.log(listData)
         const lists = listData.map((lists) =>
-        <ListItem key= {"Title-"+ lists.title} keys= {lists} id= {lists.id}/>
+        <ListItem key= {lists.id} title= {lists} id= {lists.id} 
+        getList= {this.getListsAxios}
+        />
         )
         this.setState({lists})
     }
@@ -34,8 +37,12 @@ export default class TaskList extends React.Component {
             
     }
 
-    componentDidMount = async () => {
+    renderDisplay = async () => {
         await this.getListsAxios()
+    }
+
+    componentDidMount = async () => {
+        await this.renderDisplay()
     }
 
     render(){

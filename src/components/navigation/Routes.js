@@ -8,10 +8,9 @@ import {
   } from "react-router-dom";
 // import PrivateRoute from './PrivateRoute'
 import {Login} from '../../pages/Login'
-// import { AuthContext } from '../../context/auth-context'
 import Home from '../home/home'
 import TaskList from '../list/taskList'
-import NewList from '../list/newList/newList'
+import { NewList } from '../list/newList/newList'
 
 export const Routes = () => {
 
