@@ -6,7 +6,7 @@ import {
 import axios from 'axios'
 import { CreateList } from '../../../context/listCreate'
 
-const API_LISTS = 'http://localhost:5000/lists';
+const API_LISTS = 'https://kc-todolist-api.herokuapp.com/lists';
 
 export const NewList = () => {
     const [value, setValue] = useState('')

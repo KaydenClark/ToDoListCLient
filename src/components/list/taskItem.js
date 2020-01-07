@@ -2,7 +2,7 @@ import React from 'react'
 import './taskItem.css'
 import Axios from 'axios';
 
-const TODOTASK_API = 'http://localhost:5000/tasks'
+const TODOTASK_API = 'https://kc-todolist-api.herokuapp.com/tasks'
 
 export default class TaskItem extends React.Component {
 

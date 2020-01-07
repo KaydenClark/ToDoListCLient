@@ -4,7 +4,7 @@ import axios from 'axios'
 import ListItem from './listItem'
 import { Link } from 'react-router-dom'
 
-const TODOLISTS_API = 'http://localhost:5000/lists';
+const TODOLISTS_API = 'https://kc-todolist-api.herokuapp.com/lists';
 
 const style = {
     listStyle: 'none'

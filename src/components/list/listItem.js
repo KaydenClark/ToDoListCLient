@@ -3,8 +3,8 @@ import TaskItem from './taskItem'
 import './listItem.css'
 import axios from 'axios'
 
-const TODOTASK_API = 'http://localhost:5000/tasks'
-const TODOLIST_API = 'http://localhost:5000/lists'
+const TODOTASK_API = 'https://kc-todolist-api.herokuapp.com/tasks'
+const TODOLIST_API = 'https://kc-todolist-api.herokuapp.com/lists'
 
 
 export default class ListItem extends React.Component {
