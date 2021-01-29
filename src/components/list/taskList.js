@@ -1,5 +1,4 @@
 import React from 'react';
-import './taskList.css'
 import axios from 'axios'
 import ListItem from './listItem'
 import { Link } from 'react-router-dom'

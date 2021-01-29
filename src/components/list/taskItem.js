@@ -1,5 +1,4 @@
 import React from 'react'
-import './taskItem.css'
 import Axios from 'axios';
 
 const TODOTASK_API = 'https://kc-todolist-api.herokuapp.com/tasks'

@@ -7,6 +7,7 @@ import '../styles/Login.css'
 
 export const Login = () => {
     let history = useHistory();
+    // console.log(history)
     
     let login = (event, contextFunc) => {
         event.preventDefault()

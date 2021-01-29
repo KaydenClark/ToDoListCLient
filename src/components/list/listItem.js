@@ -1,10 +1,13 @@
 import React from 'react'
 import TaskItem from './taskItem'
-import './listItem.css'
 import axios from 'axios'
+import {
+    baseProd,
+    // base
+}  from '../const'
 
-const TODOTASK_API = 'https://kc-todolist-api.herokuapp.com/tasks'
-const TODOLIST_API = 'https://kc-todolist-api.herokuapp.com/lists'
+const TODOTASK_API = `${baseProd}/tasks`
+const TODOLIST_API = `${baseProd}/lists`
 
 
 export default class ListItem extends React.Component {
