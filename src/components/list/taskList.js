@@ -53,7 +53,6 @@ export default class TaskList extends React.Component {
     render(){
         return (
         <div>
-            <p></p>
             <Link to= "/newList">
                 <button>Add List</button><br />
             </Link>

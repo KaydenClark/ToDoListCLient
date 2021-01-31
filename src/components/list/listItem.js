@@ -47,8 +47,8 @@ export default class ListItem extends React.Component {
     handleClickDelete = async (event) => {
         event.preventDefault()
         alert("a Task has been delted")
-        await this.delteListAxios()
-        await console.log('delted list')
+        await this.deleteListAxios()
+        // await console.log('delted list')
         await this.props.getList()
     }
 
@@ -68,7 +68,7 @@ export default class ListItem extends React.Component {
         });
     }
 
-    delteListAxios = async () => {
+    deleteListAxios = async () => {
         console.log('connected for deleting list')
         await axios.delete(`${api}/lists/${this.props.id}`)
     }
