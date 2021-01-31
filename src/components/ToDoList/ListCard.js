@@ -1,5 +1,5 @@
 import React from 'react'
-import TaskItem from './taskItem'
+import TaskItem from './Tasks'
 import axios from 'axios'
 import {
     baseProd
@@ -20,7 +20,7 @@ const api = `${baseProd}`
 // const classes = useStyles();
 
 
-export default class ListItem extends React.Component {
+export default class ListCard extends React.Component {
     constructor(props){
         super(props)
         this.state ={

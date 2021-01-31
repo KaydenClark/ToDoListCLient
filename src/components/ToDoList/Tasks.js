@@ -7,7 +7,7 @@ import {
 
 const api = `${baseProd}`;
 
-export default class TaskItem extends React.Component {
+export default class Tasks extends React.Component {
 
     constructor(props){
         super(props)

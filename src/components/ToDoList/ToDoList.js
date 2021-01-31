@@ -1,5 +1,5 @@
 import React from 'react';
-import ListItem from './listItem'
+import ListItem from './ListCard'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 import {
@@ -13,7 +13,7 @@ const style = {
     listStyle: 'none'
 }
 
-export default class TaskList extends React.Component {
+export default class ToDoList extends React.Component {
     constructor(props){
         super(props)
         this.state = {

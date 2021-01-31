@@ -3,7 +3,7 @@ import {
     Switch,
     Route,
   } from "react-router-dom";
-import TaskList from '../list/taskList';
+import ToDoList from '../ToDoList/ToDoList';
 
   export const Routes = () =>  {
 
@@ -11,7 +11,7 @@ import TaskList from '../list/taskList';
         <div>
             <Switch>
                 <Route exact path= '/'>
-                    <TaskList/>
+                    <ToDoList/>
                 </Route>
             </Switch>
         </div>
