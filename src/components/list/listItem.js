@@ -2,12 +2,22 @@ import React from 'react'
 import TaskItem from './taskItem'
 import axios from 'axios'
 import {
-    baseProd,
+    baseProd
     // base
 }  from '../const'
+import Card from '@material-ui/core/Card';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
+// import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
 
-const TODOTASK_API = `${baseProd}/tasks`
-const TODOLIST_API = `${baseProd}/lists`
+// const bull = <span>•</span>;
+
+const api = `${baseProd}`
+// const api = `${base}/todov2/lists`
+
+
+// const classes = useStyles();
 
 
 export default class ListItem extends React.Component {
@@ -52,7 +62,7 @@ export default class ListItem extends React.Component {
 
     postTaskAxios = async () => {
         console.log('Conected for Lists')
-        await axios.post(TODOTASK_API + '/' + this.props.id, {
+        await axios.post(`${api}/tasks/${this.props.id}`, {
             title: this.state.value,
             complete: false
         });
@@ -60,14 +70,44 @@ export default class ListItem extends React.Component {
 
     delteListAxios = async () => {
         console.log('connected for deleting list')
-        await axios.delete(TODOLIST_API + '/' + this.props.id)
+        await axios.delete(`${api}/lists/${this.props.id}`)
     }
 
 
     render(){
         return (
             <div >
-                <div  className= "title"> 
+                <Card >
+                    <CardContent>
+                    <Typography  color="textSecondary" gutterBottom>
+                        
+                    </Typography>
+                    <Typography variant="h5" component="h2">
+                    <div  className= "title"> 
+                        
+                        <form onSubmit={this.handleClickDelete}>
+                            {this.props.title.title}
+                            {/* <p></p> */}
+                            <input type= "submit" value= "-"></input> 
+                        </form>
+                    </div>
+                    </Typography>
+                    <Typography  color="textSecondary">
+                        Tasks
+                    </Typography>
+                    <Typography variant="body2" component="p">
+                        {this.renderTasks(this.props.title.data)}
+                        <form onSubmit={this.handleSubmit}>
+                            <input type= "text" placeholder= "add new task" value={this.state.value} onChange={this.handleChange}/>
+                            <input type= "submit" value= "+"/>
+                        </form>
+                    </Typography>
+                    </CardContent>
+                    <CardActions>
+                    </CardActions>
+                </Card>
+                <br />
+                {/* <div  className= "title"> 
                     {this.props.title.title}
                     <form onSubmit={this.handleClickDelete}>
                         <input type= "submit" value= "Delete List"></input> 
@@ -83,7 +123,7 @@ export default class ListItem extends React.Component {
                     </li>
                 </ul>
        
-                <br />
+                <br /> */}
             </div>
         )
     }

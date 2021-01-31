@@ -1,9 +1,13 @@
 import React from 'react';
-import axios from 'axios'
 import ListItem from './listItem'
 import { Link } from 'react-router-dom'
+import axios from 'axios'
+import {
+    baseProd,
+    // base
+}  from '../const'
 
-const TODOLISTS_API = 'https://kc-todolist-api.herokuapp.com/lists';
+const api = `${baseProd}`
 
 const style = {
     listStyle: 'none'
@@ -30,18 +34,20 @@ export default class TaskList extends React.Component {
     getListsAxios = async() => {
         console.log('Coneected for Lists')
         const [lists] = await Promise.all([
-            axios.get(TODOLISTS_API),
+            axios.get(`${api}/lists`),
         ]);
-            this.renderLists(lists.data.data)
-            
+        
+        this.renderLists(lists.data.data)  
     }
 
     renderDisplay = async () => {
+        // console.log(this.state.lists)
         await this.getListsAxios()
     }
 
     componentDidMount = async () => {
         await this.renderDisplay()
+        console.log(this.state.lists)
     }
 
     render(){

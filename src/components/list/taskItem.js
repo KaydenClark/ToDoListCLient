@@ -1,7 +1,11 @@
 import React from 'react'
-import Axios from 'axios';
+import axios from 'axios'
+import {
+    baseProd,
+    // base
+}  from '../const'
 
-const TODOTASK_API = 'https://kc-todolist-api.herokuapp.com/tasks'
+const api = `${baseProd}`;
 
 export default class TaskItem extends React.Component {
 
@@ -27,7 +31,7 @@ export default class TaskItem extends React.Component {
     }
 
     patchTaskAxios = async () => {
-        await Axios.patch(`${TODOTASK_API}/${this.props.id}/titleChange`,{
+        await axios.patch(`${api}/tasks/${this.props.id}/titleChange`,{
             title: this.state.value
         })
     }
