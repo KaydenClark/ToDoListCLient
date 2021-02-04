@@ -21,7 +21,6 @@ export default class Tasks extends React.Component {
 
     handleChange = (event) => {
         this.setState({value: event.target.value})
-        console.log(this.state.value)
     }
 
     handleSubmit = async (event) => {

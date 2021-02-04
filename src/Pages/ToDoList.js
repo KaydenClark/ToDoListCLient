@@ -1,13 +1,12 @@
 import React from 'react';
-import ListItem from './ListCard'
-import { Link } from 'react-router-dom'
+import ListItem from '../components/ToDoList/ListCard'
 import axios from 'axios'
 import {
-    baseProd,
-    // base
-}  from '../const'
+    // baseProd,
+    base
+}  from '../components/const'
 
-const api = `${baseProd}`
+const api = `${base}`
 
 const style = {
     listStyle: 'none'
@@ -17,18 +16,18 @@ export default class ToDoList extends React.Component {
     constructor(props){
         super(props)
         this.state = {
-            lists: [],
+            listTitles: [],
         } //state
     }// constructor
 
     renderLists = (listData) => {
         // console.log(listData)
-        const lists = listData.map((lists) =>
-        <ListItem key= {lists.id} title= {lists} id= {lists.id} 
+        const listTitles = listData.map((titleObj) =>
+        <ListItem key= {Date.now()} title= {titleObj[0].title} 
         getList= {this.getListsAxios}
-        />
-        )
-        this.setState({lists})
+        />)
+        // console.log(lists)
+        this.setState({listTitles})
     }
 
     getListsAxios = async() => {
@@ -36,28 +35,23 @@ export default class ToDoList extends React.Component {
         const [lists] = await Promise.all([
             axios.get(`${api}/lists`),
         ]);
-        
-        this.renderLists(lists.data.data)  
+        console.log(lists.data)
+        this.renderLists(lists.data)  
     }
 
     renderDisplay = async () => {
-        // console.log(this.state.lists)
         await this.getListsAxios()
     }
 
     componentDidMount = async () => {
         await this.renderDisplay()
-        console.log(this.state.lists)
     }
 
     render(){
         return (
         <div>
-            <Link to= "/newList">
-                <button>Add List</button><br />
-            </Link>
             <ul style = {style} className= "taskLists">
-                {this.state.lists}
+                {this.state.listTitles}
             </ul>
          </div>
         ) //return 

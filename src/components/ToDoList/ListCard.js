@@ -8,17 +8,9 @@ import {
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
-// import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
-// const bull = <span>•</span>;
-
 const api = `${baseProd}`
-// const api = `${base}/todov2/lists`
-
-
-// const classes = useStyles();
-
 
 export default class ListCard extends React.Component {
     constructor(props){
@@ -48,7 +40,6 @@ export default class ListCard extends React.Component {
         event.preventDefault()
         alert("a Task has been delted")
         await this.deleteListAxios()
-        // await console.log('delted list')
         await this.props.getList()
     }
 
@@ -86,7 +77,7 @@ export default class ListCard extends React.Component {
                     <div  className= "title"> 
                         
                         <form onSubmit={this.handleClickDelete}>
-                            {this.props.title.title}
+                            {this.props.title}
                             {/* <p></p> */}
                             <input type= "submit" value= "-"></input> 
                         </form>
@@ -96,7 +87,7 @@ export default class ListCard extends React.Component {
                         Tasks
                     </Typography>
                     <Typography variant="body2" component="p">
-                        {this.renderTasks(this.props.title.data)}
+                        {/* {this.renderTasks(this.props.title.data)} */}
                         <form onSubmit={this.handleSubmit}>
                             <input type= "text" placeholder= "add new task" value={this.state.value} onChange={this.handleChange}/>
                             <input type= "submit" value= "+"/>
