@@ -18,7 +18,8 @@ export default class ListCard extends React.Component {
     constructor(props){
         super(props)
         this.state ={
-            value: ''
+            value: '',
+            tasks: []
         }
 
         this.handleChange = this.handleChange.bind(this);
@@ -54,13 +55,15 @@ export default class ListCard extends React.Component {
         // console.log(this.state.tasks)
     }
 
-    renderTasks = (taskList) => {
-        // const [id] = React.useState(nanoid)
+    renderTasks = async (taskList) => {
         const task = taskList.map((taskObj) =>
-        <Tasks key = {u_id()} title= {taskObj} />
+        <Tasks key = {u_id()} title= {taskObj} getTasks= {this.getTasksAxios}/>
         )
-        console.log(task)
-        this.setState({taskList : task})
+        const taskItems = []
+        taskItems.push(task)
+        // console.log(taskItems)
+        await this.setState({taskItems : taskItems})
+        // console.log(this.state.taskItems)
     }
 
     postTaskAxios = async () => {
@@ -78,7 +81,7 @@ export default class ListCard extends React.Component {
 
     componentDidMount = async () => {
         await this.getTasksAxios()
-        this.renderTasks(this.state.tasks)
+        await this.renderTasks(this.state.tasks)
     }
 
 
@@ -104,7 +107,8 @@ export default class ListCard extends React.Component {
                         Tasks
                     </Typography>
                     <Typography variant="body2" component="p">
-                        {this.state.taskList}
+                        {this.state.taskItems}
+                        {/* <Tasks /> */}
                     </Typography>
                     </CardContent>
                     <CardActions>
