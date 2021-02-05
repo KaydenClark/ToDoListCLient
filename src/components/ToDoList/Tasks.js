@@ -36,19 +36,16 @@ export default class Tasks extends React.Component {
     }
 
     componentDidMount = async () => {
-        // console.log(this.props.getTasks)
-        
         this.setState({task : this.props.title})
-        console.log(this.props.title)
     }
 
     render(){
         return (
             <li className= "title-task">
-                {this.props.title}
-                {/* <form onSubmit= {this.handleSubmit}>
+                {/* {this.props.title} */}
+                <form onSubmit= {this.handleSubmit}>
                     <input className= 'taskItem' value= {this.state.value} onChange={this.handleChange} />
-                </form> */}
+                </form>
             </li>
         )
     }
