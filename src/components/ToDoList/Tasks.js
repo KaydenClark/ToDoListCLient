@@ -1,11 +1,11 @@
 import React from 'react'
 import axios from 'axios'
 import {
-    baseProd,
-    // base
+    // baseProd,
+    base
 }  from '../const'
 
-const api = `${baseProd}`;
+const api = `${base}`;
 
 export default class Tasks extends React.Component {
 

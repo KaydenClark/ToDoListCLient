@@ -1,6 +1,6 @@
 const baseProd = 'https://kc-todolist-api.herokuapp.com' //Production
 
-const base = 'http://localhost:5000/ToDoV2' //Testing
+const base = 'http://localhost:5000/api/todoV2' //Testing
 
 const currentAPI = ""
 

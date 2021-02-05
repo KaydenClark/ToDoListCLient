@@ -35,7 +35,7 @@ export default class ToDoList extends React.Component {
         const [lists] = await Promise.all([
             axios.get(`${api}/lists`),
         ]);
-        console.log(lists.data)
+        // console.log(lists.data)
         this.renderLists(lists.data)  
     }
 
