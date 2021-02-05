@@ -12,6 +12,7 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
 const api = `${base}`
+const u_id = require('generate-unique-id')
 
 export default class ListCard extends React.Component {
     constructor(props){
@@ -54,8 +55,9 @@ export default class ListCard extends React.Component {
     }
 
     renderTasks = (taskList) => {
+        // const [id] = React.useState(nanoid)
         const task = taskList.map((taskObj) =>
-        <Tasks key= {Date.now() + taskObj} title= {taskObj.title} />
+        <Tasks key = {u_id()} title= {taskObj} />
         )
         console.log(task)
         this.setState({taskList : task})
@@ -103,10 +105,6 @@ export default class ListCard extends React.Component {
                     </Typography>
                     <Typography variant="body2" component="p">
                         {this.state.taskList}
-                        <form onSubmit={this.handleSubmit}>
-                            <input type= "text" placeholder= "add new task" value={this.state.value} onChange={this.handleChange}/>
-                            <input type= "submit" value= "+"/>
-                        </form>
                     </Typography>
                     </CardContent>
                     <CardActions>
@@ -114,7 +112,11 @@ export default class ListCard extends React.Component {
                         Edit
                         </Button>
                         <Button size="small" color="secondary">
-                        Delete
+                        {/* <form onSubmit={this.handleSubmit}>
+                            <input type= "text" placeholder= "add new task" value={this.state.value} onChange={this.handleChange}/>
+                            <input type= "submit" value= "+"/>
+                        </form> */}
+                        Add Task
                         </Button>
                     </CardActions>
                 </Card>

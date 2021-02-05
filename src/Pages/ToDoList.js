@@ -7,6 +7,7 @@ import {
 }  from '../components/const'
 
 const api = `${base}`
+const u_id = require('generate-unique-id')
 
 const style = {
     listStyle: 'none'
@@ -23,7 +24,7 @@ export default class ToDoList extends React.Component {
     renderLists = (listData) => {
         // console.log(listData)
         const listTitles = listData.map((titleObj) =>
-        <ListItem key= {Date.now()} title= {titleObj[0].title} 
+        <ListItem key= {u_id()} title= {titleObj[0].title} 
         getList= {this.getListsAxios}
         />)
         // console.log(lists)
